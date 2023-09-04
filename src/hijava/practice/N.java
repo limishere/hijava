@@ -12,7 +12,7 @@ public class N {
 		x = y;
 		y = temp; // ->메모리 속에서 변수들이 왔다갔다 한다는 것을 이해하기!
 	}
-	
+									
 	public static void main(String[] args) {
 		N n = new N();
 		System.out.println("x=" + n.x);
