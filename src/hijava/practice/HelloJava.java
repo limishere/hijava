@@ -14,7 +14,7 @@ public class HelloJava {
 		
 //		HelloJava에게 say라는 명령을 내림
 		HelloJava.say("Hi~"); 
-		
+		 
 //		JVM이 스스로 화면에 출력
 		System.out.println("Hello Java!!");
 	}
