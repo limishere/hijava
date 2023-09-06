@@ -16,7 +16,7 @@ public class Oper {
 		i++; // i = i + 1
 //		i--; // i = i - 1
 		int j = i++; 
-		System.out.println(j); // i가 j에 대입된 후 증가됨 따라서 j=1
+		System.out.println(j); // i가 j에 대입된 후 증가됨. 따라서 j=1
 		
 //		System.out.println(++i);
 		System.out.println(i++);
