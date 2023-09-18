@@ -11,7 +11,7 @@ package hijava.practice;
  * */
 public class Man {
 	
-	public static final int COFFEE = 3000; // 커피값 고정 & 1개만 존제
+	public static final int COFFEE = 3000; // 커피값 고정 & 1개만 존재
 	public final static int DONUT = 2500; // 도넛값 고정 & 1개만 존재
 	
 	private String name;
