@@ -73,7 +73,7 @@ public class Arr {
 		
 		people[0].setName("김111111"); 
 		// people의 값을 바꿨는데 아래에서 people2를 출력하면 값이 바뀐다
-		// -> 왜? people2는 주소를 참조하고 있기 때문에
+		// -> 왜? people2는 주소를 참조하고 있기 때문에(얕은복사의 경우)
 		
 		System.out.println("people[0]=" + people[0].getName());
 		System.out.println("people2[0]=" + people2[0].getName());
