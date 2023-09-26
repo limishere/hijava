@@ -1,5 +1,8 @@
 package hijava.practice;
 
+import hijava.oop.Mom;
+import hijava.oop.Son;
+
 // ex1) 숫자 1 ~ 100을 배열에 담는 코드를 작성하시오.
 // ex2) str1 ~ str100을 배열에 담는 코드를 작성하시오.
 // ex3) Man 9명을 배열로 표현 해 보시오. (이름: 김1수 ~ 김9수)
@@ -12,9 +15,28 @@ public class Arr {
 //		ex3();
 //		ex4(); // 배열 단순복사
 //		ex5();
-		ex6();
+//		ex6();
+		
+		Mom mom = new Mom("영자");
+		// 다른 클래스서도 Mom클래스를 부를 수 있다. public 이므로
+		mom.say(); //오류. protected ->다른 패키지에 있는 protected는 접근 불가
+//		mom.eat(); // public이므로 가능
+		
+		Mom son = new Son("길동");//자식은 부모타입으로 선언가능(다형성)
+		son.say();
+//		son.ttt(); ->부모타입으로 선언했기 때문에 Son에만 있는 메소드는 호출불가
+		
+		
+		System.out.println(son.getName());
+		// getName은 Mom클래스에 있지만 public이라서 자식도 상속을 받음
+		// 따라서 Son도 getName을 갖게됨
+		// Mom클래스에서 name은 private이지만 public메소드로 자식에게 전달이 가능해짐
+		
 	}
 
+	
+	
+	
 	// 알파벳 대문자와 소문자를 2줄로, 2차원 배열을 이용하여 출력하시오.(2행 26열)
 	// A B C D ...
 	// a b c d ...
