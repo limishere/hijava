@@ -28,6 +28,11 @@ public class Man {
 		this.name = name;
 	}
 	
+	public void sayHello() {
+		System.out.println("안녕하세요");
+		System.out.println("제 이름은 " + this.getName() + "입니다.");
+	}
+	
 	public void buyCoffee(int count) {
 //		this.amount = this.amount - 3000 * count;
 //		this.amount -= COFFEE * count;
