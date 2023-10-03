@@ -8,13 +8,65 @@ public class Main {
 
 	public static void main(String[] args) {
 //		al();
-		
 //		momAndSon();
-	
-		koreanAndAmerican();
+//		koreanAndAmerican();
+//		drinkTest();
+		eatTest();
+		
+		
+//		Mom mom = new Mom();
+//		Son son = new Son();
+//		
+//		System.out.println(mom instanceof Mom);
+//		System.out.println(son instanceof Mom);
+//		System.out.println(mom instanceof Son);
+//		System.out.println(son instanceof Son);
+		
 	}
 	
 	
+	private static void eatTest() {
+		Man korean = new Korean("홍길동");
+		American american = new American("John");
+		
+//		eat(korean);
+		eat(american);
+	}
+
+	private static void eat(Man m) {
+		if(m instanceof Korean) {
+			((Korean)m).eatRice();
+			
+		}else if(m instanceof American) {
+			((American)m).eatBreand();
+			
+		}else {
+			System.out.println("인스턴스가 존재하지 않습니다!");
+		}
+	}
+
+
+	private static void drinkTest() {
+		Mom mom = new Mom();
+		Mom son = new Son();
+		
+		drink(mom);
+		drink(son);
+		
+	}
+	
+	private static void drink(Mom m) {
+		if (m instanceof Son) {
+//			Son s = (Son)m;
+//			s.drinkMilk();
+			((Son)m).drinkMilk();
+			
+		} else {
+			m.drinkBeer();
+		}
+	}
+
+
 	//Man 클래스를 상속한 우리나라 사람(Korean)과 미국사람(American)을 정의하고,
 	//각각의 인사말(sayHello) 함수를 정의하시오.
 	private static void koreanAndAmerican() {
@@ -22,13 +74,24 @@ public class Main {
 //		American american = new American("John");
 		
 		// 다형성
-		Man korean = new Korean("홍길동");
-		Man american = new American("John");
+//		Man korean = new Korean("홍길동");
+//		Man american = new American("John");
+//		
+//		korean.sayHello();
+//		american.sayHello();
 		
-		korean.sayHello();
-		american.sayHello();
+		Man korean = new Korean("홍길동");
+		American american = new American("John");
+		
+		sayHi(korean);
+		sayHi(american);
+		
 	}
-
+		
+	private static void sayHi(Man man) {
+		man.sayHello();
+	}
+		
 
 	// 상속
 	private static void momAndSon() {
