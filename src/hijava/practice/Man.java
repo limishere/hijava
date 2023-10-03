@@ -86,4 +86,5 @@ public class Man {
 		System.out.println(john);
 	}
 
+
 }
