@@ -20,4 +20,10 @@ public class Son extends Mom { // extends로 상속
 	public void ttt() {
 		System.out.println("Son에만 있는 메소드!");
 	}
+	
+	public void drinkMilk() {
+		System.out.println("Drinking Milk~~");
+	}
+	
+	
 }
