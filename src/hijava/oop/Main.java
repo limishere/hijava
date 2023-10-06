@@ -7,20 +7,29 @@ import hijava.practice.Man;
 public class Main {
 
 	public static void main(String[] args) {
+		
+//		AbstSuper sp = new AbstSuper(); ->오류 왜? 추상클래스는 인스턴스화 할 수 없다.
+		AbstSuper sp = new AbstChild(); //AbstChild클래스는 추상클래스가 아님. 생성가능
+		int i = 5;
+		int j = 10;
+		
+		System.out.println( "min=" + sp.min(i, j) + ", max=" + sp.max(i, j) );
+
+		
 //		al();
 //		momAndSon();
 //		koreanAndAmerican();
 //		drinkTest();
-		eatTest();
+//		eatTest();
 		
 		
 //		Mom mom = new Mom();
-//		Son son = new Son();
+//		Mom son = new Son();
 //		
-//		System.out.println(mom instanceof Mom);
-//		System.out.println(son instanceof Mom);
-//		System.out.println(mom instanceof Son);
-//		System.out.println(son instanceof Son);
+//		System.out.println(mom instanceof Mom); //true
+//		System.out.println(son instanceof Mom); //true
+//		System.out.println(mom instanceof Son); //false
+//		System.out.println(son instanceof Son); //true
 		
 	}
 	
@@ -29,8 +38,8 @@ public class Main {
 		Man korean = new Korean("홍길동");
 		American american = new American("John");
 		
-//		eat(korean);
-		eat(american);
+		eat(korean);
+//		eat(american);
 	}
 
 	private static void eat(Man m) {
