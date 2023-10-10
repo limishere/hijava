@@ -8,12 +8,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-//		AbstSuper sp = new AbstSuper(); ->오류 왜? 추상클래스는 인스턴스화 할 수 없다.
-		AbstSuper sp = new AbstChild(); //AbstChild클래스는 추상클래스가 아님. 생성가능
-		int i = 5;
-		int j = 10;
+//		netsport();
+//		animal();
+//		weight();
 		
-		System.out.println( "min=" + sp.min(i, j) + ", max=" + sp.max(i, j) );
+//		AbstSuper sp = new AbstSuper(); ->오류 왜? 추상클래스는 인스턴스화 할 수 없다. 자식클래스로 만들어야함
+//		AbstSuper sp = new AbstChild(); //AbstChild클래스는 추상클래스가 아님. 생성가능
+//		int i = 5;
+//		int j = 10;
+//		
+//		System.out.println( "min=" + sp.min(i, j) + ", max=" + sp.max(i, j) );
 
 		
 //		al();
@@ -31,9 +35,56 @@ public class Main {
 //		System.out.println(mom instanceof Son); //false
 //		System.out.println(son instanceof Son); //true
 		
+		
+		software();
+		
 	}
 	
 	
+	private static void software() {
+		
+		SoftWare site = new WebSite();
+		SoftWare app = new MobileApp();
+		
+		site.product();
+		app.product();
+	}
+
+
+	private static void netsport() {
+		
+		NetSport pp = new PingPong();
+		NetSport te = new Tennis();
+		
+		pp.play();
+		System.out.println("-----------");
+		te.play();
+	}
+
+
+	private static void animal() {
+		Animal dog = new Dog();
+		Animal cat = new Cat();
+		
+		barkAnimal(dog);
+		barkAnimal(cat);
+	}
+
+	private static void barkAnimal(Animal ani) {
+		ani.bark();
+	}
+
+
+	private static void weight() {
+		Weight guen = new Guen();
+		Weight pound = new Pound();
+		
+		int cnt = 5; // 개수 = 5
+		System.out.println("Guen=" + guen.getGram(cnt) + "g");
+		System.out.println("Pound=" + pound.getGram(cnt) + "g");
+	}
+
+
 	private static void eatTest() {
 		Man korean = new Korean("홍길동");
 		American american = new American("John");
