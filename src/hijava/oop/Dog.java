@@ -7,5 +7,9 @@ public class Dog extends Animal{
 		System.out.println("멍멍");
 	}
 	
+	public static void eat(String food) {
+		System.out.println("Dog eats " + food);
+	}
+	
 	
 }
