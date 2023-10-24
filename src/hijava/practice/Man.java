@@ -73,17 +73,39 @@ public class Man {
 	
 	
 	public static void main(String[] args) {
+		
 		Man hong = new Man("Hong");
-		Man john = new Man("John");
+		Man kim = new Man("Kim");
+		Man kildong = hong;
+		Man ilsoo = new Man("Kim");
 		
-		hong.buyCoffee(1);
-		hong.buyDonut(2);
+		//hashCode
+		System.out.println(hong.hashCode());
+		System.out.println(kim.hashCode());
+		System.out.println(kildong.hashCode());
+		System.out.println( System.identityHashCode(kildong) );
+		//hong과 kildong은 같은 인스턴스이므로 같은 hashCode를 갖는다(JVM에 같은 위치에 존재)
+		//hashCode로 JVM의 위치를 알 수 있다.(위치를 나타내는것이 hashCode다!)
 		
-		john.buyCoffee(2);
-		john.buyDonut(1);
+
+		//equals
+//		System.out.println(hong.equals(kim)); //false
+//		System.out.println(hong.equals(kildong)); //true
+//		System.out.println(ilsoo.equals(kim)); //false
 		
-		System.out.println(hong);
-		System.out.println(john);
+		
+		
+//		Man hong = new Man("Hong");
+//		Man john = new Man("John");
+//		
+//		hong.buyCoffee(1);
+//		hong.buyDonut(2);
+//		
+//		john.buyCoffee(2);
+//		john.buyDonut(1);
+//		
+//		System.out.println(hong);
+//		System.out.println(john);
 	}
 
 
