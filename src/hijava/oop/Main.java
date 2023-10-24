@@ -44,10 +44,10 @@ public class Main {
 //		calulator();
 //		testinterface();
 //		total();
-//		calcoper();
+		calcoper();
 		
 //		scanner();
-		scanner2();
+//		scanner2();
 		
 		
 		
@@ -133,8 +133,9 @@ public class Main {
 
 	private static void total() {
 		int[] arr = new int[] {1, 2, 5, 9};
-		SubTotal st = new SubTotal();
-		System.out.println("Total = " + st.sum(arr));
+//		SubTotal st = new SubTotal();
+		Total ti = new TotalImpl();
+		System.out.println("Total = " + ti.sum(arr));
 	}
 
 
@@ -156,9 +157,9 @@ public class Main {
 
 	private static void calulator() {
 		Calculator calc = new CalculatorImpl(); 
-		//인터페이스는 new 불가! 
+		//인터페이스는 new 불가! (객체를 생성할 수 없다)
 		//추상클래스와 마찬가지로 정의만 있고 실행부분이 없기 때문에
-		//new Calculator(); 하면 에러가 난다.
+		//new Calculator(); 하면 에러가 나게 된다.
 		
 		int x = 10;
 		int y = 5;
