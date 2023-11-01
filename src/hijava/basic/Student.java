@@ -40,7 +40,7 @@ public class Student implements Cloneable {
 	public Object clone() throws CloneNotSupportedException{
 		Student clobj = (Student)super.clone();
 		clobj.name = clobj.name + "복제본";
-		return clobj;
+		return clobj; //클래스를 복제하는 것이 아니라 인스턴스를 복제하는 것이다!
 	}
 	
 	
