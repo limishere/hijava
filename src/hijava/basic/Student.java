@@ -1,5 +1,9 @@
 package hijava.basic;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Objects;
 
 public class Student implements Cloneable {
@@ -73,11 +77,92 @@ public class Student implements Cloneable {
 	
 	
 
-	public static void main(String[] args) throws CloneNotSupportedException {
+	public static void main(String[] args) throws CloneNotSupportedException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
 		
 		Student st = new Student(921234, "홍길동");
-		Student s2 = (Student)st.clone(); //복제(Clone하려면 클래스에 implements Cloneable 해줘야한다.)
-		System.out.println(s2);
+//		Student s2 = (Student)st.clone(); //복제(Clone하려면 클래스에 implements Cloneable 해줘야한다.)
+//		System.out.println(s2);
+//		System.out.println(st.getClass() + ", " + st.getClass().getName() + ", " + st.getClass().getSimpleName()); 
+		//인스턴스.getClass:클래스를 준다. class hijava.basic.Student
+		//getName():클래스 이름을 준다. hijava.basic.Student(패키지명까지 같이줌)
+		//getSimpleName():패키지명빼고 클래스이름만 줌 Student
+		
+		
+		//reflect
+		//String값만으로도 클래스와 인스턴스를 만들어 낼 수 있다.
+		String inputStr = "hijava.basic.Student";
+		Class<?> cls = Class.forName(inputStr); //forName():Class를 동적으로 로딩(Class Loading)
+		Package pkg = cls.getPackage();
+		System.out.println("pkg = " + pkg);
+		
+//		for (Constructor c : cls.getConstructors())
+//			System.out.println("Constructor=" + c);
+//		for (Field f : cls.getFields())
+//			System.out.println("Field+" + f);
+//		for (Method m : cls.getMethods())
+//			System.out.println("method=" + m.getName());
+
+		Student newStu = (Student)cls.newInstance();
+//		Student newStu = new Student();
+		System.out.println(newStu);
+		Method setnameMethod = cls.getMethod("setName", String.class);
+		setnameMethod.invoke(newStu, "홍길동");
+		Method getnameMethod = cls.getMethod("getName");
+		System.out.println("newStu.name=" + getnameMethod.invoke(newStu));
+		Method setidMethod = cls.getMethod("setId", int.class);
+		setidMethod.invoke(newStu, 100);
+		
+		
+//		Student s2 = (Student)cls.newInstance(); //인스턴스 생성
+		//-> newInstance는 Object타입이므로 Student로 캐스팅해야한다
+		
+		
+		//StringBuilder 실사용 예
+		boolean hasCondition = true; //검색 조건이 있으면,
+		String s = "select * from Tbl";
+		String searchStr = "홍길동";
+		if(hasCondition) { // 검색조건이 없으면 전체를 다읽음
+			s = s + "where name like '%" + searchStr + "%";
+			s += " and ID > 0";
+			s += " limit 10";
+		} // ->효율이 좋지 않음
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from Tbl");
+		// + 연산자보다 append가 더 가독성이 좋음
+		if(hasCondition) { 
+			sb.append("where name like '%").append(searchStr).append("%");
+			sb.append(100).append('t'); //append는 숫자도 가능
+		} //->이런면에서 StringBuilder를 String보다 많이 사용한다
+		
+		
+		
+//		sb.append("aaaaaaaa");
+//		System.out.println("sb1=" + sb.toString()); // sb1=aaaaaaaa
+//		sb.setLength(0); // char[]를 char[0]로 바꿈->char[]가 비워짐
+//		System.out.println("sb2=" + sb.toString()); // sb2=
+//		
+//		StringBuffer sf = new StringBuffer();
+//		sf.append("aaaaaaaa");
+//		System.out.println("sf1=" + sf.toString()); // sf1=aaaaaaaa
+//		sf.setLength(0); // char[]를 char[0]로 바꿈->char[]가 비워짐
+//		System.out.println("sf2=" + sb.toString()); // sf2=
+//		// StringBuilder와 StringBuffer은 실행되는 것은 똑같다
+		
+		
+		
+//		String s1 = new String("123abc");
+//		String s2 = "123abc";
+//		String s3 = "123abc";
+//
+//		System.out.println("s1==s2 :" + (s1 == s2) + ", " + s1.equals(s2)); //false, true
+//		// ==은 주소를 비교하는데 s1은 인스턴스에 생기고, s2는 상수풀에 생기기 때문에 false
+//		// s1.equals(s2)는 s1과 s2의 값이 같으므로 true. String을 정확하게 비교하려면 equals를 써야한다!
+//		System.out.println(s3 == s2);
+//		System.out.println(System.identityHashCode(s1) + ", " + System.identityHashCode(s2));
+//		System.out.println(s1.hashCode() + " : " + s2.hashCode() + " : " + s3.hashCode());
+
+		
 		
 //		System.out.println(st);
 //		String stt = new String("홍길동");
