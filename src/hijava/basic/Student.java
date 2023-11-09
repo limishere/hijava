@@ -88,12 +88,16 @@ public class Student implements Cloneable {
 		//getSimpleName():패키지명빼고 클래스이름만 줌 Student
 		
 		
-		//reflect
+		//reflection
 		//String값만으로도 클래스와 인스턴스를 만들어 낼 수 있다.
 		String inputStr = "hijava.basic.Student";
-		Class<?> cls = Class.forName(inputStr); //forName():Class를 동적으로 로딩(Class Loading)
+		Class cls = Class.forName(inputStr); 
+		//forName():Class를 동적으로 로딩(Class Loading)
+		//입력받은 String으로 클래스를 만들 수 있음
+		
+		Student s2 = (Student)cls.newInstance(); //newInstance는 Object타입이므로 Student로 캐스팅해야한다.
 		Package pkg = cls.getPackage();
-		System.out.println("pkg = " + pkg);
+		System.out.println("pkg=" + pkg); //pkg=package hijava.basic
 		
 //		for (Constructor c : cls.getConstructors())
 //			System.out.println("Constructor=" + c);
@@ -102,13 +106,18 @@ public class Student implements Cloneable {
 //		for (Method m : cls.getMethods())
 //			System.out.println("method=" + m.getName());
 
-		Student newStu = (Student)cls.newInstance();
-//		Student newStu = new Student();
+		
+		Student newStu = (Student)cls.newInstance();//Student newStu = new Student(); 와 같음
 		System.out.println(newStu);
-		Method setnameMethod = cls.getMethod("setName", String.class);
+		
+		Method setnameMethod = cls.getMethod("setName", String.class); //(메소드명,클래스타입)
 		setnameMethod.invoke(newStu, "홍길동");
+		// invoke는 함수를 실행시키는 것
+		System.out.println(newStu);
+		
 		Method getnameMethod = cls.getMethod("getName");
 		System.out.println("newStu.name=" + getnameMethod.invoke(newStu));
+		
 		Method setidMethod = cls.getMethod("setId", int.class);
 		setidMethod.invoke(newStu, 100);
 		
