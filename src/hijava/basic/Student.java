@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
-public class Student implements Cloneable {
+public class Student implements Cloneable, Comparable<Student> {
 	private int id;
 	private String name;
 	
@@ -18,7 +18,6 @@ public class Student implements Cloneable {
 
 
 	//멤버변수가 private이라 바로 접근 못하기때문에 getter,setter를 만들어준다.
-	
 	public int getId() {
 		return id;
 	}
@@ -73,6 +72,12 @@ public class Student implements Cloneable {
 		
 		Student other = (Student) obj;
 		return id == other.id && Objects.equals(name, other.name);
+	}
+	
+	@Override
+	public int compareTo(Student o) {
+		System.out.println("comp=" + this.id + "-" + o.id);
+		return (this.id - o.id) * -1;
 	}
 	
 	
@@ -196,6 +201,8 @@ public class Student implements Cloneable {
 //		// s1과 s3은 메모리주소는 다르지만 같은 학생이다. equals로 비교 가능
 
 	}
-	
+
+
+
 	
 }
