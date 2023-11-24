@@ -39,7 +39,7 @@ public class Outer {
 	//static Inner 클래스
 	static class StaticInner {
 		static String inStr = "Static Inner inStr"; //static inner클래스에서는 static멤버변수를 가질 수 있다.
-		public static void in() {
+		public static void in() { //static inner클래스 안에서는 static메서드!
 			System.out.println("static inner class >> name=" + inStr);
 		}
 	}
@@ -55,8 +55,9 @@ public class Outer {
 //		->outer가 없이 밖에서 바로 inner를 만들게 되면 오류가 남, 바로 접근할 수 없다!
 //		  outer가 먼저 생성되어야 한다.
 		
-		StaticInner.in();//static inner클래스는 바로 접근이 가능하다
-		
+		StaticInner.in();
+		//static inner클래스는 바로 접근이 가능하다
+		//스태틱 내부클래스의 인스턴스는 외부클래스를 먼저 생성하지 않아도 된다.
 	}
 	
 	
