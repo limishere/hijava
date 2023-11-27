@@ -10,6 +10,11 @@ public class Student implements Cloneable, Comparable<Student> {
 	private int id;
 	private String name;
 	
+	//default생성자
+	public Student() {
+		this.name = "Guest";
+	}
+	
 	//생성자
 	public Student(int id, String name) {
 		this.id = id;
