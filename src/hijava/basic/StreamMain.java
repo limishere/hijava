@@ -1,5 +1,8 @@
 package hijava.basic;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,13 +11,73 @@ import java.util.OptionalDouble;
 import java.util.stream.IntStream;
 
 public class StreamMain {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 //		test1();
 //		test2();
-		tryThis();
+//		tryThis();
+//		test3();
+//		test4();
+//		test5();
+		test6();
 		
 	}
+
+	// 좋은 코드!!(최종버전)
+	private static void test6() {
+		
+		//try 괄호 속에서 오픈을 하면 close를 따로 할 필요가 없다!!
+		try(FileInputStream fis = new FileInputStream("text.txt")){
+			System.out.println("00000000000000");
+		} catch (FileNotFoundException e) {
+			System.out.println("text.txt파일이 없어요!!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	
+	private static void test5() throws IOException {
+		FileInputStream fis = new FileInputStream("text.txt");
+		fis.close(); //메인메소드(JVM)까지 예외를 던져버림-> 좋지못함
+	}
+
+	
+	//개선된 버전
+	private static void test4() {
+		FileInputStream fis = null; //바깥쪽에 선언
+		try {
+			fis = new FileInputStream("text.txt");
+		} catch (FileNotFoundException e) { 
+			e.printStackTrace(); //파일을 못찾았을때 처리됨
+			System.out.println("text.txt파일이 없습니다!!" + e.getMessage());
+		} finally {
+			try {
+				fis.close(); //close는 finally에서! (close는 반드시 해야함)
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	
+	private static void test3() {
+		
+		try {
+			FileInputStream fis = new FileInputStream("text.txt");
+			fis.close();
+		} catch (FileNotFoundException e) { 
+			e.printStackTrace(); //파일을 못찾았을때 처리됨
+			System.out.println("text.txt파일이 없습니다!!" + e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace(); //close하다가 에러났을때 처리
+		} finally {
+
+		}
+
+	}
+	
+
 	private static void tryThis() {
 		List<Student> students = new ArrayList<>();
 		students.add(new Student(90, "홍길동"));
